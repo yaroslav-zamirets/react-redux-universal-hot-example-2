@@ -1,0 +1,11 @@
+/**
+ * Override Bootstrap styles that you can't modify via variables here.
+ *
+ */
+
+html,
+body {
+  min-height: auto;
+  height: 100%; // custom
+  min-height: 0; // custom
+}

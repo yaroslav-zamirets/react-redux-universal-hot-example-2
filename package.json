@@ -1,0 +1,162 @@
+{
+  "name": "frontend",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": "",
+  "keywords": [],
+  "main": "bin/server.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run start-prod\"",
+    "start-local": "concurrently --kill-others \"better-npm-run start-local\"",
+    "start-prod": "better-npm-run start-prod",
+    "build": "better-npm-run build",
+    "lint": "eslint -c .eslintrc src",
+    "postinstall": "npm run build",
+    "start-dev": "better-npm-run start-dev",
+    "watch-client": "better-npm-run watch-client",
+    "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\""
+  },
+  "betterScripts": {
+    "start-prod": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "APIHOST": "buttongroup.herokuapp.com",
+        "APIPORT": ""
+      }
+    },
+    "start-local": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "PORT": 8080,
+        "APIHOST": "buttongroup.herokuapp.com",
+        "APIPORT": ""
+      }
+    },
+    "start-dev": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development",
+        "PORT": 8080,
+        "APIHOST": "buttongroup.herokuapp.com",
+        "APIPORT": ""
+      }
+    },
+    "watch-client": {
+      "command": "node webpack/webpack-dev-server.js",
+      "env": {
+        "UV_THREADPOOL_SIZE": 100,
+        "NODE_PATH": "./src",
+        "PORT": 8008,
+        "APIHOST": "buttongroup.herokuapp.com",
+        "APIPORT": ""
+      }
+    },
+    "build": {
+      "command": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "APIHOST": "buttongroup.herokuapp.com",
+        "APIPORT": ""
+      }
+    }
+  },
+  "dependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-display-name": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.14.0",
+    "babel-runtime": "^6.11.6",
+    "body-parser": "^1.15.2",
+    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass-loader": "^1.0.10",
+    "classnames": "^2.2.5",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "fs": "0.0.1-security",
+    "http-proxy": "^1.14.0",
+    "lru-memoize": "^1.0.1",
+    "piping": "^0.3.0",
+    "pretty-error": "^1.2.0",
+    "react": "<=15.3.2",
+    "react-addons-create-fragment": "<=15.3.2",
+    "react-addons-css-transition-group": "<=15.3.2",
+    "react-addons-shallow-compare": "<=15.3.2",
+    "react-cookie": "^0.4.8",
+    "react-dom": "<=15.3.2",
+    "react-helmet": "^2.3.0",
+    "react-inline-css": "^2.0.0",
+    "react-redux": "^4.0.0",
+    "react-router": "^2.8.1",
+    "react-router-redux": "^4.0.5",
+    "react-router-scroll": "^0.2.1",
+    "redux": "^3.6.0",
+    "redux-connect": "^2.4.0",
+    "redux-form": "6.1.1",
+    "redux-logger": "^2.7.4",
+    "scroll-behavior": "^0.3.2",
+    "serialize-javascript": "^1.1.2",
+    "serve-favicon": "^2.3.0",
+    "superagent": "^2.3.0",
+    "warning": "^2.1.0",
+    "webpack-isomorphic-tools": "^2.6.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-flow-strip-types": "^6.18.0",
+    "babel-plugin-typecheck": "^3.9.0",
+    "better-npm-run": "0.0.8",
+    "clean-webpack-plugin": "^0.1.6",
+    "concurrently": "^2.2.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
+    "eslint-plugin-flowtype": "^2.25.0",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.9.0",
+    "flow-bin": "^0.34.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^3.10.0",
+    "postcss-loader": "^0.13.0",
+    "react-addons-test-utils": "<=15.3.2",
+    "react-transform-catch-errors": "^1.0.2",
+    "react-transform-hmr": "^1.0.4",
+    "redbox-react": "^1.3.1",
+    "sass-loader": "^4.0.1",
+    "strip-loader": "^0.1.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.8.2",
+    "webpack-hot-middleware": "^2.12.2"
+  },
+  "engines": {
+    "node": "7.1.0",
+    "yarn": "0.16.1"
+  }
+}
